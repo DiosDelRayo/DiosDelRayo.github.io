@@ -10,3 +10,5 @@ jobs:
       contents: "read"
       pages: "write"
       id-token: "write"
+    with:
+      settings: "pelicanconf.py"
