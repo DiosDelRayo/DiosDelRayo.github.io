@@ -19,7 +19,7 @@ jobs:
         run: pip install pelican[markdown] pelican-tag-cloud pymdown-extensions
       
       - name: Build site
-        run: pelican content --delete-output-directory
+        run: pelican content -d -v
       
       - name: Upload artifact
         uses: actions/upload-artifact@v4
