@@ -13,5 +13,4 @@ jobs:
     with:
       settings: "publishconf.py"
       requirements: "pelican[markdown] pymdown-extensions"
-      theme: "https://github.com/seanh/sidecar.git"
       python: "3.12"
