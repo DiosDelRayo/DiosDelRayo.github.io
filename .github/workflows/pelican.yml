@@ -1,0 +1,23 @@
+name: Update Pelican Site
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: python:3.13-slim-bookworm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout
+      - name: Install Pelican
+        run: pip install pelican[markdown] pelican-tag-cloud
+      - name: Build site
+        run: pelican content
+      - name: Deploy site
+        uses: gh-pages/deploy
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          deploy_branch: master
+          build_dir: output
