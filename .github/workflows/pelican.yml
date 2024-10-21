@@ -1,39 +1,14 @@
-
-name: Update Pelican Site
-
+name: Deploy to GitHub Pages
 on:
   push:
-    branches:
-      - master
-
+    branches: ["master"]
+  workflow_dispatch:
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  deploy:
+    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
     permissions:
-      id-token: write
-      pages: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Install Pelican
-        run: pip install pelican[markdown] pelican-tag-cloud pymdown-extensions
-      
-      - name: Build site
-        run: pelican content -d -v
-      
-      # Fix permissions and ensure no symlinks
-      - name: Fix file permissions
-        run: |
-          find ./output -type f -exec chmod 644 {} \;
-          find ./output -type d -exec chmod 755 {} \;
-          find ./output -type l -exec rm {} \;  # Remove any symlinks if found
-      
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: ./output  # Ensure this is the correct path to your build directory
-      
-      - name: Deploy site
-        uses: actions/deploy-pages@v4
+      contents: "read"
+      pages: "write"
+      id-token: "write"
+    with:
+      settings: "publishconf.py"
