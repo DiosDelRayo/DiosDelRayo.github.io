@@ -1,14 +1,32 @@
-name: Deploy to GitHub Pages
+name: Update Pelican Site
+
 on:
   push:
-    branches: ["master"]
-  workflow_dispatch:
+    branches:
+      - master
+
 jobs:
-  deploy:
-    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+  build-and-deploy:
+    runs-on: ubuntu-latest
     permissions:
-      contents: "read"
-      pages: "write"
-      id-token: "write"
-    with:
-      settings: "pelicanconf.py"
+      contents: read
+      id-token: write
+      pages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install Pelican
+        run: pip install pelican[markdown] pelican-tag-cloud pymdown-extensions
+      
+      - name: Build site
+        run: pelican content -d -v
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./output
+      
+      - name: Deploy site
+        uses: actions/deploy-pages@v4
