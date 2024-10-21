@@ -5,12 +5,16 @@ on:
     branches:
       - master
 
-permissions:
-  id-token: write
-
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      id-token: write
+        pages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -19,6 +23,7 @@ jobs:
       - name: Build site
         run: pelican content
       - name: Deploy site
+        id: deployment
         uses: actions/deploy-pages@v4
         with:
           build_dir: output
