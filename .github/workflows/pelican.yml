@@ -10,7 +10,7 @@ jobs:
     runs-on: python:3.13-slim-bookworm
     steps:
       - name: Checkout code
-        uses: DiosDelRayo/DiosDelRayo.github.io
+        uses: DiosDelRayo/DiosDelRayo.github.io@master
       - name: Install Pelican
         run: pip install pelican[markdown] pelican-tag-cloud pymdownx
       - name: Build site
