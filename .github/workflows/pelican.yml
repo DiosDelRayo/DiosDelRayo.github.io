@@ -1,3 +1,4 @@
+
 name: Update Pelican Site
 
 on:
@@ -21,6 +22,13 @@ jobs:
       - name: Build site
         run: pelican content -d -v
       
+      # Fix permissions and ensure no symlinks
+      - name: Fix file permissions
+        run: |
+          find ./output -type f -exec chmod 644 {} \;
+          find ./output -type d -exec chmod 755 {} \;
+          find ./output -type l -exec rm {} \;  # Remove any symlinks if found
+      
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
@@ -29,3 +37,6 @@ jobs:
       
       - name: Deploy site
         uses: actions/deploy-pages@v4
+        with:
+          build_dir: output  # Ensure build_dir is correctly pointing to the output folder
+
