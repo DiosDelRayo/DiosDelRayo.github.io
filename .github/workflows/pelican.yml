@@ -10,13 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: DiosDelRayo/DiosDelRayo.github.io@master
+        uses: actions/checkout@4
       - name: Install Pelican
         run: pip install pelican[markdown] pelican-tag-cloud pymdownx
       - name: Build site
         run: pelican content
       - name: Deploy site
-        uses: gh-pages/deploy@4
+        uses: actions/deploy-pages@4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           deploy_branch: master
