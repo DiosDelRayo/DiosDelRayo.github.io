@@ -1,49 +1,17 @@
-name: Update Pelican Site
-
+name: Deploy to GitHub Pages
 on:
   push:
-    branches:
-      - master
-
+    branches: ["master"]
+  workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      id-token: write
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Install Pelican
-        run: pip install pelican[markdown] pelican-tag-cloud pymdown-extensions
-      
-      - name: Build site
-        run: pelican content -d -v
-
-      - name: Fix permissions
-        run: |
-          chmod -c -R +rX ./output | while read line; do
-            echo "::warning title=Invalid file permissions automatically fixed::$line"
-          done
-      - name: Upload artifact
-        id: deployment
-        uses: actions/upload-artifact@v4
-        with:
-          name: github-pages
-          path: ./output/
-
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
+    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
     permissions:
-      contents: read
-      id-token: write
-      pages: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy site
-        id: deployment
-        uses: actions/deploy-pages@v4
+      contents: "read"
+      pages: "write"
+      id-token: "write"
+    with:
+      settings: "publishconf.py"
+      requirements: "pelican[markdown] pymdown-extensions"
+      theme: "https://github.com/seanh/sidecar.git"
+      python: "3.12"
