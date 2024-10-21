@@ -6,15 +6,12 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       id-token: write
       pages: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -26,10 +23,23 @@ jobs:
         run: pelican content -d -v
       
       - name: Upload artifact
+        id: deployment
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: ./output
-      
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy site
+        id: deployment
         uses: actions/deploy-pages@v4
