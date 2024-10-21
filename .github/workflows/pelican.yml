@@ -29,5 +29,3 @@ jobs:
       
       - name: Deploy site
         uses: actions/deploy-pages@v4
-        with:
-          build_dir: ./output
