@@ -29,6 +29,42 @@ FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 TAG_CLOUD_BADGE = True
 
+MARKDOWN = {
+    'extension_configs': {
+        'markdown.extensions.toc': {},
+        'markdown.extensions.extra': {},
+        'markdown.extensions.meta': {},
+        'markdown.extensions.tables': {},
+        'markdown.extensions.fenced_code': {},
+        'markdown.extensions.footnotes': {},
+        'markdown.extensions.attr_list': {},
+        'markdown.extensions.def_list': {},
+        'markdown.extensions.abbr': {},
+        'markdown.extensions.nl2br': {},
+        'markdown.extensions.smarty': {},
+        'markdown.extensions.abbr': {},
+        'markdown.extensions.sane_lists': {},
+        'markdown.extensions.md_in_html': {},
+        'markdown.extensions.toc': {},
+        'markdown.extensions.wikilinks': {},
+        'pymdownx.mark': {},
+        'pymdownx.emoji': {},
+        'pymdownx.progressbar': {},
+        'pymdownx.tilde': {},
+        'pymdownx.tasklist': {},
+    }
+}
+
+PLUGINS = [
+]
+
+ANALYTICS = """
+<style>
+ul.checkbox li {
+    list-style-type: none;
+}
+</style>
+"""
 # Blogroll
 LINKS = (
     ("Pelican", "https://getpelican.com/"),

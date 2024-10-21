@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout
       - name: Install Pelican
-        run: pip install pelican[markdown] pelican-tag-cloud
+        run: pip install pelican[markdown] pelican-tag-cloud pymdownx
       - name: Build site
         run: pelican content
       - name: Deploy site
