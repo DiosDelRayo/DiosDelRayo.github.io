@@ -10,13 +10,13 @@ jobs:
     runs-on: python:3.13-slim-bookworm
     steps:
       - name: Checkout code
-        uses: actions/checkout
+        uses: DiosDelRayo/DiosDelRayo.github.io
       - name: Install Pelican
         run: pip install pelican[markdown] pelican-tag-cloud pymdownx
       - name: Build site
         run: pelican content
       - name: Deploy site
-        uses: gh-pages/deploy
+        uses: gh-pages/deploy@4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           deploy_branch: master
