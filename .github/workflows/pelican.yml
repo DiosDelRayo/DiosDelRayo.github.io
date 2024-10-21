@@ -18,6 +18,4 @@ jobs:
       - name: Deploy site
         uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_branch: master
           build_dir: output
