@@ -14,12 +14,20 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
       - name: Install Pelican
         run: pip install pelican[markdown] pelican-tag-cloud pymdown-extensions
+      
       - name: Build site
         run: pelican content
+      
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ./output  # Ensure this is the correct path to your build directory
+      
       - name: Deploy site
-        id: deployment
         uses: actions/deploy-pages@v4
         with:
-          build_dir: output
+          build_dir: ./output
