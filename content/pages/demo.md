@@ -1,6 +1,5 @@
 Title: DiosDelRayo - Now
-url: index.html
-save_as: index.html
+status: hidden
 
 # Yesterday
 
