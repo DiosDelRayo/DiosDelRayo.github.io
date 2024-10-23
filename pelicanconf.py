@@ -1,6 +1,6 @@
-with open('.GITHUB_TOKEN', 'r') as f:
-    GITHUB_TOKEN=f.read()
-    f.close()
+#with open('.GITHUB_TOKEN', 'r') as f:
+#    GITHUB_TOKEN=f.read()
+#    f.close()
 
 
 AUTHOR = 'DiosDelRayo'
