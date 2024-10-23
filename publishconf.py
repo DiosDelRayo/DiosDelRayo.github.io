@@ -7,36 +7,30 @@ import sys
 sys.path.append(os.curdir)
 from pelicanconf import *
 
-# If your site is available via HTTPS, make sure SITEURL begins with https://
+AUTHOR = 'DiosDelRayo'
+SITENAME = ''
 # SITEURL = "https://diosdelrayo.github.io"
+
 PATH = "content"
-ARTICLE_PATHS = ['projects']
-USE_FOLDER_AS_CATEGORY = True
-ARTICLE_URL = '{category}/{slug}/'
-ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
-TIMEZONE='UTC'
-AUTHOR='DiosDelRayo'
+
+TIMEZONE = 'UTC'
+DEFAULT_LANG = 'en'
 GITHUB='https://github.com/DiosDelRayo'
-DEFAULT_DATE='fs'
 FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
-ARTICLE_PATHS = ['projects']
+ARTICLE_PATHS = ['articles']
 USE_FOLDER_AS_CATEGORY = True
 ARTICLE_URL = '{category}/{slug}/'
 ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
-CATEGORY_URL = 'project/{slug}.html'
-CATEGORY_SAVE_AS = 'project/{slug}.html'
+CATEGORY_URL = 'article/{slug}.html'
+CATEGORY_SAVE_AS = 'article/{slug}.html'
 GITHUB = 'https://github.com/DiosDelRayo'
 DEFAULT_DATE = 'fs'
 
 DELETE_OUTPUT_DIRECTORY = True
 
-# Following items are often useful when publishing
-
-# DISQUS_SITENAME = ""
-# GOOGLE_ANALYTICS = ""
 
 MARKDOWN = {
     'extension_configs': {
@@ -65,15 +59,8 @@ MARKDOWN = {
 }
 
 PLUGINS = [
+    'taskstack'
 ]
-
-ANALYTICS = """
-<style>
-ul.checkbox li {
-    list-style-type: none;
-}
-</style>
-"""
 # Blogroll
 LINKS = (
     ("GitHub", "https://github.com/DiosDelRayo"),
@@ -84,4 +71,3 @@ SOCIAL = (
 )
 
 DEFAULT_PAGINATION = False
-

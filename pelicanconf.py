@@ -1,3 +1,8 @@
+with open('.GITHUB_TOKEN', 'r') as f:
+    GITHUB_TOKEN=f.read()
+    f.close()
+
+
 AUTHOR = 'DiosDelRayo'
 SITENAME = ''
 SITEURL = ""
@@ -5,7 +10,6 @@ SITEURL = ""
 PATH = "content"
 
 TIMEZONE = 'UTC'
-
 DEFAULT_LANG = 'en'
 
 # Feed generation is usually not desired when developing
@@ -15,19 +19,19 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 RELATIVE_URLS = True
-ARTICLE_PATHS = ['projects']
+ARTICLE_PATHS = ['articles']
 USE_FOLDER_AS_CATEGORY = True
 ARTICLE_URL = '{category}/{slug}/'
 ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 PAGE_URL = '{slug}/'
 PAGE_SAVE_AS = '{slug}/index.html'
-CATEGORY_URL = 'project/{slug}.html'
-CATEGORY_SAVE_AS = 'project/{slug}.html'
+CATEGORY_URL = 'article/{slug}.html'
+CATEGORY_SAVE_AS = 'article/{slug}.html'
 GITHUB = 'https://github.com/DiosDelRayo'
 DEFAULT_DATE = 'fs'
 FEED_ALL_ATOM = "feeds/all.atom.xml"
 CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
-TAG_CLOUD_BADGE = True
+# TAG_CLOUD_BADGE = True
 
 MARKDOWN = {
     'extension_configs': {
@@ -56,15 +60,8 @@ MARKDOWN = {
 }
 
 PLUGINS = [
+    'taskstack'
 ]
-
-ANALYTICS = """
-<style>
-ul.checkbox li {
-    list-style-type: none;
-}
-</style>
-"""
 # Blogroll
 LINKS = (
     ("Github DiosDelRayo", "https://github.com/DiosDelRayo"),
@@ -75,6 +72,3 @@ SOCIAL = (
 )
 
 DEFAULT_PAGINATION = False
-
-# Uncomment following line if you want document-relative URLs when developing
-# RELATIVE_URLS = True
