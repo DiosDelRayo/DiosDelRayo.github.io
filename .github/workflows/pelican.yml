@@ -7,9 +7,10 @@ jobs:
   deploy:
     uses: "DiosDelRayo/DiosDelRayo.github.io/.github/workflows/github_pages.yml@master"
     with:
-      ghtoken: ${{ secrets.GITHUB_TOKEN }}
       settings: "publishconf.py"
       requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
+    secrets:
+      ghtoken: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: "read"
       pages: "write"
