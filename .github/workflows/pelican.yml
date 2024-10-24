@@ -10,11 +10,11 @@ jobs:
       contents: "read"
       pages: "write"
       id-token: "write"
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: dump env
         run: env
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   deploy:
     uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
     env:
