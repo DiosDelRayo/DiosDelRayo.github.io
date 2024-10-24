@@ -17,8 +17,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   deploy:
     uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: "read"
       pages: "write"
