@@ -6,14 +6,14 @@ on:
 jobs:
   deploy:
     steps:
-      - name: dump env
+      - name: write github token for plugin
         run: echo -n $GITHUB_TOKEN > .GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
-        with:
-          settings: "publishconf.py"
-          requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
+    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+    with:
+      settings: "publishconf.py"
+      requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
     permissions:
       contents: "read"
       pages: "write"
