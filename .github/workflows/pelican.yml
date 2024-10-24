@@ -17,12 +17,12 @@ jobs:
         run: env
   deploy:
     uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: "read"
       pages: "write"
       id-token: "write"
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     with:
       settings: "publishconf.py"
       requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
