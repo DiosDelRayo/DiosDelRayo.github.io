@@ -10,6 +10,8 @@ jobs:
       contents: "read"
       pages: "write"
       id-token: "write"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: dump env
         run: env
@@ -19,6 +21,8 @@ jobs:
       contents: "read"
       pages: "write"
       id-token: "write"
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     with:
       settings: "publishconf.py"
       requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
