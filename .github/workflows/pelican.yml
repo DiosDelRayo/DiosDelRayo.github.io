@@ -5,6 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   dumpenv:
+    run-on: ubuntu-latest
     permissions:
       contents: "read"
       pages: "write"
