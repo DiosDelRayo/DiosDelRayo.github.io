@@ -69,7 +69,7 @@ jobs:
         run: pip install ${{ inputs.requirements }}
       - name: Build Pelican site
         env:
-          GITHUB_TOKEN: ${{ inputs.ghtoken }}
+          GITHUB_TOKEN: ${{ secrets.ghtoken }}
         shell: python
         run: |
           import subprocess
