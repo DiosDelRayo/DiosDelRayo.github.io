@@ -2,11 +2,10 @@
 name: Deploy to GitHub Pages
 on:
   workflow_call:
-    inputs:
+    secrets:
       ghtoken:
         required: true
-        description: "GITHUB_TOKEN for taskstack plugin"
-        type: string
+    inputs:
       settings:
         required: true
         description: "The path to your Pelican settings file (`pelican`'s `--settings` option), for example: 'publishconf.py'"
