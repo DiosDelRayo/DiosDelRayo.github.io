@@ -4,17 +4,19 @@ on:
     branches: ["master"]
   workflow_dispatch:
 jobs:
-  deploy:
+  ghtoken:
+    runs-on: ubuntu-latest
     steps:
-      - name: dump env
+      - name: write github token for plugin
         run: echo -n $GITHUB_TOKEN > .GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Pelican
-        uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
-        with:
-          settings: "publishconf.py"
-          requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
+  deploy:
+    needs: ghtoken
+    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+    with:
+      settings: "publishconf.py"
+      requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
     permissions:
       contents: "read"
       pages: "write"
