@@ -65,7 +65,7 @@ PLUGINS = [
 # Blogroll
 LINKS = (
     ('Github DiosDelRayo', 'https://github.com/DiosDelRayo'),
-    ('Pelican TaskStack Plugin', 'https://getpelican.com'),
+    ('Pelican', 'https://getpelican.com'),
     ('TaskStack', 'https://github.com/DiosDelRayo/taskstack'),
     ('Pelican TaskStack Plugin', 'https://github.com/DiosDelRayo/pelican-taskstack'),
     ('Site Source', 'https://github.com/DiosDelRayo/DiosDelRayo.github.io'),
