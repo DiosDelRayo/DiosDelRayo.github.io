@@ -74,6 +74,8 @@ jobs:
         shell: python
         run: |
           import subprocess
+          import os
+          print(os.environ)
 
           cmd = "pelican"
           cmd += " --settings ${{ inputs.settings }}"
