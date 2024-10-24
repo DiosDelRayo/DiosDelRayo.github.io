@@ -4,24 +4,18 @@ on:
     branches: ["master"]
   workflow_dispatch:
 jobs:
-  dumpenv:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: "read"
-      pages: "write"
-      id-token: "write"
+  deploy:
     steps:
       - name: dump env
-        run: env
+        run: echo -n $GITHUB_TOKEN > .GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  deploy:
-    uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+      - uses: "getpelican/pelican/.github/workflows/github_pages.yml@main"
+        with:
+          settings: "publishconf.py"
+          requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
     permissions:
       contents: "read"
       pages: "write"
       id-token: "write"
-    with:
-      settings: "publishconf.py"
-      requirements: "pelican[markdown] pymdown-extensions git+https://github.com/DiosDelRayo/pelican-taskstack"
 
